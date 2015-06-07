@@ -1,0 +1,15 @@
+//
+// Created by malo on 2015-06-06.
+//
+
+#ifndef SERVICEANNOUNCER_SERVICEANNOUNCER_H
+#define SERVICEANNOUNCER_SERVICEANNOUNCER_H
+
+
+class ServiceAnnouncer
+{
+
+};
+
+
+#endif //SERVICEANNOUNCER_SERVICEANNOUNCER_H

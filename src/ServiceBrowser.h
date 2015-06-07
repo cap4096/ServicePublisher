@@ -1,0 +1,15 @@
+//
+// Created by malo on 2015-06-06.
+//
+
+#ifndef SERVICEANNOUNCER_SERVICEBROWSER_H
+#define SERVICEANNOUNCER_SERVICEBROWSER_H
+
+
+class ServiceBrowser
+{
+
+};
+
+
+#endif //SERVICEANNOUNCER_SERVICEBROWSER_H
