@@ -10,7 +10,8 @@
 
 class DnsResolver
 {
-    static std::vector< std::shared_ptr<HostAddress> > resolve(const std::string& node, const std::string& service);
+public:
+    static std::vector<HostAddress> resolve(const std::string& node, const std::string& service);
 };
 
 

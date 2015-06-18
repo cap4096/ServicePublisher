@@ -5,7 +5,9 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <arpa/inet.h>
 #include <netdb.h>
+#include <string.h>
 
 std::vector<HostAddress> HostAddress::fromAddrInfo(const struct addrinfo& addrInfo)
 {
@@ -53,7 +55,6 @@ HostAddress::HostAddress(const addrinfo* addrInfo)
     }
 }
 
-
 std::string HostAddress::toString() const
 {
     char buffer[128];
@@ -62,11 +63,15 @@ std::string HostAddress::toString() const
     switch(m_addressFamily)
     {
         case AF_INET:
-            result = std::string(inet_ntop(m_addressFamily, ((struct sockaddr_in*)&m_sockAddr))->sin_addr, buffer, sizeof(buffer));
+            result = std::string(
+                    inet_ntop(AF_INET,
+                              ((struct sockaddr_in*)&m_sockBuffer))->sin_addr, buffer, sizeof(buffer));
             break;
 
         case AF_INET6:
-            result = std::string(inet_ntop(m_addressFamily, ((struct sockaddr_in6*)&m_sockAddr))->sin6_addr, buffer, sizeof(buffer));
+            result = std::string(
+                    inet_ntop(AF_INET6,
+                              ((struct sockaddr_in6*)&m_sockBuffer))->sin6_addr, buffer, sizeof(buffer));
             break;
 
         default:

@@ -8,19 +8,16 @@
 #include <sys/socket.h>
 #include <netdb.h>
 
-std::vector <std::shared_ptr<HostAddress>> DnsResolver::resolve(const std::string& node, const std::string& service)
+std::vector<HostAddress> DnsResolver::resolve(const std::string& node, const std::string& service)
 {
     struct addrinfo* res = nullptr;
-    std::vector <std::shared_ptr<HostAddress>> result;
 
     if(getaddrinfo(node.c_str(), service.c_str(), nullptr, &res)==0)
     {
-       for (auto current = res; current != nullptr; current = current->ai_addr)
-       {
-            result.push_back(HostAddress(current));
-       }
+        return std::vector<HostAddress>();
     }
 
+    auto result = HostAddress::fromAddrInfo(res);
     freeaddrinfo(res);
 
     return result;

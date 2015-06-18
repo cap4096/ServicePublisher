@@ -1,39 +1,10 @@
-//
-// Created by malo on 2015-06-17.
-//
-
 #ifndef SERVICEANNOUNCER_HOSTADDRESS_H
 #define SERVICEANNOUNCER_HOSTADDRESS_H
 #include <cstdint>
 #include <vector>
+#include <string>
 
 extern "C" struct addrinfo;
-extern "C" struct sockaddr;
-
-
-enum class ProtocolFamily : int
-{
-    UNSPEC = 0,         // Unspecified.
-    LOCAL = 1,          // Local to host (pipes and file-domain).
-    UNIX = LOCAL,		// POSIX name for PF_LOCAL.
-    FILE = LOCAL,       // Another non-standard name for PF_LOCAL.
-    INET = 2           // IP protocol family.
-    INET6 = 10
-};
-
-
-enum class AddressFamily : int
-{
-    UNSPEC = ProtocolFamily::UNSPEC,
-    LOCAL = ProtocolFamily::LOCAL,
-    UNIX = ProtocolFamily::UNIX,
-    FILE = ProtocolFamily::FILE,
-    INET = ProtocolFamily::INET,
-    INET6 = ProtocolFamily::INET6
-};
-
-
-
 
 class HostAddress
 {
